@@ -1,0 +1,60 @@
+- name: Package Installation - Update package cache
+  pacman:
+    update_cache: true
+  changed_when: false
+
+- name: Package Installation - Essentials
+  pacman:
+    name: [
+        'net-tools',
+        'powerline',
+        'powerline-fonts',
+        'yay'
+    ]
+    state: present
+
+- name: Package Installation - Productivity Tools
+  pacman:
+    name: [
+        'tmux',
+        'vim',
+        'gnome-terminal'
+    ]
+    state: present
+
+- name: Package Installation - Development Tools
+  pacman:
+    name: [
+        'base-devel',
+        'bind-tools',
+        'binutils',
+        'docker',
+        'docker-compose',
+        'ipython',
+        'lxc',
+        'python-pip',
+        'vagrant'
+    ]
+    state: present
+
+- name: Package Installation - Media
+  pacman:
+    name: [
+        'flameshot',
+        'smplayer',
+    ]
+    state: present
+
+- name: Package Installation - System Desktop
+  pacman:
+    name: [
+        'rofi'
+    ]
+    state: present
+
+- name: Package Installation - Remove Unnecessary Packages
+  pacman:
+    name: [
+        'empathy',
+    ]
+    state: absent

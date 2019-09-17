@@ -1,0 +1,18 @@
+#!/bin/bash
+
+readonly TEMP_RAW=$(sensors | grep Package | sed -n "s/.*+\(.*C\) .*/\1/p")
+
+echo "${TEMP_RAW}"
+echo "${TEMP_RAW}"
+
+TEMP_ROUND=${TEMP_RAW%.*}
+
+if (( $(echo "$TEMP_ROUND > 80" | bc -l) ))
+then
+	echo "#FF6666"
+elif (( $(echo "$TEMP_ROUND > 60" | bc -l) ))
+then
+	echo "#FFBF00"
+else
+	echo "#33CC33"
+fi

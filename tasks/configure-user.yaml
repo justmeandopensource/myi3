@@ -1,0 +1,32 @@
+- name: User Configuration - Add sudoers entry for "{{ username }}"
+  lineinfile:
+    path: "/etc/sudoers.d/{{ username }}"
+    line: "{{ username }} ALL=(ALL) NOPASSWD: ALL"
+    create: yes
+    mode: "0640"
+
+- name: User Configuration - Add "{{ username }}" to docker group
+  user:
+    name: "{{ username }}"
+    groups: docker
+    append: yes
+
+- name: User Configuration - Copy tmux configuration
+  copy:
+    src: "files/configs/tmux.conf"
+    dest: "{{ userhome }}/.tmux.conf"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+
+- name: User Configuration - Copy pictures
+  become_user: "{{ username }}"
+  copy:
+    src: files/pictures/
+    dest: "{{ userhome }}/Pictures/"
+
+- name: User Configuration - Copy opt scripts
+  become_user: "{{ username }}"
+  copy:
+    src: files/opt/scripts/
+    dest: "{{ userhome }}/opt/scripts/"
+    mode: "0755"

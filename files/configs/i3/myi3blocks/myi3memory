@@ -1,0 +1,6 @@
+#!/bin/bash
+
+MEM_STAT=$(free -m | grep Mem | awk '{print $2,$3}')
+MEM_USED_MB=${MEM_STAT##* }
+MEM_USED_GB=$(echo "scale=2;$MEM_USED_MB/1024" | bc -l)
+echo "$MEM_USED_GB GB"

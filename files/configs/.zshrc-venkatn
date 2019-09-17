@@ -1,0 +1,26 @@
+# Aliases
+alias vi='vim'
+alias sudo='sudo '
+alias youdl='youtube-dl -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0'
+alias listvms='vboxmanage list vms'
+alias listrunningvms='vboxmanage list runningvms'
+alias gcw='git config user.name Venkat Nagappan && git config user.email wenkatn@gmail.com'
+alias camstop='killall mplayer'
+alias kindstart='kind create cluster --config=$HOME/opt/scripts/kind-config.yaml && export KUBECONFIG="$(kind get kubeconfig-path --name="kind")"'
+alias watch='watch '
+
+# Exports
+export EDITOR=vim
+export PATH=$HOME/bin:$PATH:$HOME/go/bin:$HOME/.local/bin
+
+# Functions
+camstart()
+{
+  if [[ -z "$1" ]]; then
+    echo "Usage: camstart [device]"
+    echo "Example: camstart 0"
+  else 
+    device=/dev/video$1
+    nohup mplayer -nokeepaspect -ontop -noborder -geometry 320x240+1590+800 -tv driver=v4l2:width=320:height=240:device=$device tv:// >/dev/null 2>&1 &
+  fi
+}

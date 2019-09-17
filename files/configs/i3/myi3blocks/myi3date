@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo $(date '+%a, %b %d %I:%M %p')
+
+case $BLOCK_BUTTON in
+	1) gsimplecal ;;
+	*) ;;
+esac

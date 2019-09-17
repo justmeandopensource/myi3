@@ -1,0 +1,22 @@
+#!/bin/bash
+
+readonly LOAD_AVG=$(cat /proc/loadavg | awk '{print $1,$2,$3}')
+LOAD_AVG_1m=$(echo ${LOAD_AVG} | awk '{print $1}')
+
+echo "${LOAD_AVG}"
+echo "${LOAD_AVG}"
+
+if (( $(echo "$LOAD_AVG_1m > 5.0" | bc -l) ))
+then
+	echo "#FF6666"
+elif (( $(echo "$LOAD_AVG_1m > 2.5" | bc -l) ))
+then
+	echo "#FFBF00"
+else
+	echo "#33CC33"
+fi
+
+case $BLOCK_BUTTON in
+	1) gnome-terminal -- htop ;;
+	*) ;;
+esac

@@ -1,0 +1,36 @@
+- name: i3 Configuration - Copy "{{ userhome }}/.i3/config"
+  become_user: "{{ username }}"
+  copy:
+    src: "files/configs/i3/i3/config"
+    dest: "{{ userhome }}/.i3/config"
+
+- name: i3 Configuration - Copy "{{ userhome }}/.config/compton.conf"
+  become_user: "{{ username }}"
+  copy:
+    src: "files/configs/i3/config/compton.conf"
+    dest: "{{ userhome }}/.config/compton.conf"
+
+- name: i3 Configuration - Copy "{{ userhome }}/.config/dunst/dunstrc"
+  become_user: "{{ username }}"
+  copy:
+    src: "files/configs/i3/config/dunst/dunstrc"
+    dest: "{{ userhome }}/.config/dunst/dunstrc"
+
+- name: i3 Configuration - Copy "{{ userhome }}/.config/i3blocks/config"
+  become_user: "{{ username }}"
+  copy:
+    src: "files/configs/i3/config/i3blocks/config"
+    dest: "{{ userhome }}/.config/i3blocks/config"
+
+- name: i3 Configuration - Copy "{{ userhome }}/.config/rofi/config"
+  become_user: "{{ username }}"
+  copy:
+    src: "files/configs/i3/config/rofi/config"
+    dest: "{{ userhome }}/.config/rofi/config"
+
+- name: i3 Configuration - Copy "{{ userhome }}/opt/scripts/myi3blocks" scripts
+  become_user: "{{ username }}"
+  copy:
+    src: files/configs/i3/myi3blocks/
+    dest: "{{ userhome }}/opt/scripts/myi3blocks/"
+    mode: "0755"
