@@ -24,9 +24,8 @@
     src: files/pictures/
     dest: "{{ userhome }}/Pictures/"
 
-- name: User Configuration - Copy opt scripts
+- name: User Configuration - Create opt/scripts directory
   become_user: "{{ username }}"
-  copy:
-    src: files/opt/scripts/
-    dest: "{{ userhome }}/opt/scripts/"
-    mode: "0755"
+  file:
+    path: "{{ userhome }}/opt/scripts"
+    state: directory
