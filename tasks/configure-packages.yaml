@@ -41,7 +41,7 @@
   pacman:
     name: [
         'flameshot',
-        'smplayer',
+        'smplayer'
     ]
     state: present
 
