@@ -48,7 +48,8 @@
 - name: Package Installation - System Desktop
   pacman:
     name: [
-        'rofi'
+        'rofi',
+        'i3blocks'
     ]
     state: present
 
