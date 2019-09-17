@@ -16,11 +16,23 @@
     src: "files/configs/i3/config/dunst/dunstrc"
     dest: "{{ userhome }}/.config/dunst/dunstrc"
 
+- name: i3 Configuration - Create i3blocks directory
+  become_user: "{{ username }}"
+  file:
+    path: "{{ userhome }}/.config/i3blocks"
+    state: directory
+
 - name: i3 Configuration - Copy "{{ userhome }}/.config/i3blocks/config"
   become_user: "{{ username }}"
   copy:
     src: "files/configs/i3/config/i3blocks/config"
     dest: "{{ userhome }}/.config/i3blocks/config"
+
+- name: i3 Configuration - Create rofi directory
+  become_user: "{{ username }}"
+  file:
+    path: "{{ userhome }}/.config/rofi"
+    state: directory
 
 - name: i3 Configuration - Copy "{{ userhome }}/.config/rofi/config"
   become_user: "{{ username }}"
