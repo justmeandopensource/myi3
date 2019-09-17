@@ -11,6 +11,6 @@
 - name: System Configuration - Enable docker service
   systemd:
     name: docker
-    enabled: no
-    state: stopped
+    enabled: yes
+    state: started
 
