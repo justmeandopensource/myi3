@@ -35,12 +35,6 @@ label=ℂ
 instance=2653941
 interval=600
 
-[myi3weather-hgrey]
-command=$HOME/opt/scripts/myi3blocks/myi3weather
-label=ℍ
-instance=2647133
-interval=600
-
 [time]
 command=$HOME/opt/scripts/myi3blocks/myi3date
 interval=5
