@@ -7,8 +7,8 @@
   pacman:
     name: [
         'net-tools',
-        'powerline',
-        'powerline-fonts',
+        #'powerline',
+        #'powerline-fonts',
         'yay'
     ]
     state: present
@@ -16,8 +16,8 @@
 - name: Package Installation - Productivity Tools
   pacman:
     name: [
-        'tmux',
-        'vim',
+        #'tmux',
+        #'vim',
         'gnome-terminal'
     ]
     state: present
@@ -25,23 +25,23 @@
 - name: Package Installation - Development Tools
   pacman:
     name: [
-        'base-devel',
+        #'base-devel',
         'bind-tools',
         'binutils',
         'docker',
-        'docker-compose',
-        'ipython',
-        'lxc',
-        'python-pip',
-        'vagrant'
+        #'docker-compose',
+        #'ipython',
+        #'lxc',
+        #'python-pip',
+        #'vagrant'
     ]
     state: present
 
 - name: Package Installation - Media
   pacman:
     name: [
-        'flameshot',
-        'smplayer'
+        'flameshot'
+        #'smplayer'
     ]
     state: present
 
