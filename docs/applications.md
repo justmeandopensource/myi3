@@ -6,5 +6,6 @@
 |i3blocks|i3 status bar|
 |dunst|Notification for i3|
 |gnome-terminal|Terminal|
+|ranger|command line file manager|
 |mousepad/leafpad|Editor|
 |flameshot|Screenshot utility|
