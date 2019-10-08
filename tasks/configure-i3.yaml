@@ -58,3 +58,15 @@
     src: files/configs/i3/myi3blocks/
     dest: "{{ userhome }}/opt/scripts/myi3blocks/"
     mode: "0755"
+
+- name: i3 Configuration - Copy i3exit script
+  copy:
+    src: files/configs/misc-scripts/i3exit
+    dest: /usr/bin/i3exit
+    mode: '0777'
+
+- name: i3 Configuration - Copy blurlock script
+  copy:
+    src: files/configs/misc-scripts/blurlock
+    dest: /usr/bin/blurlock
+    mode: '0777'

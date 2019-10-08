@@ -27,7 +27,8 @@
 - name: Package Installation - Media
   package:
     name: [
-        'flameshot'
+        'flameshot',
+        'imagemagick'
     ]
     state: present
 
