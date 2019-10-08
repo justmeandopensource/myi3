@@ -1,61 +1,41 @@
-- name: Package Installation - Update package cache
+- name: Package Installation - Update Pacman package cache
   pacman:
     update_cache: true
   changed_when: false
+  when: ansible_facts["os_family"] == "Archlinux"
 
-- name: Package Installation - Essentials
-  pacman:
-    name: [
-        'net-tools',
-        #'powerline',
-        #'powerline-fonts',
-        'yay'
-    ]
-    state: present
+- name: Package Installation - Update Apt package cache
+  apt:
+    update_cache: true
+  changed_when: false
+  when: ansible_facts["os_family"] == "Debian"
 
 - name: Package Installation - Productivity Tools
-  pacman:
+  package:
     name: [
-        #'tmux',
-        #'vim',
         'gnome-terminal'
     ]
     state: present
 
 - name: Package Installation - Development Tools
-  pacman:
+  package:
     name: [
-        #'base-devel',
-        'bind-tools',
         'binutils',
-        'docker',
-        #'docker-compose',
-        #'ipython',
-        #'lxc',
-        #'python-pip',
-        #'vagrant'
     ]
     state: present
 
 - name: Package Installation - Media
-  pacman:
+  package:
     name: [
         'flameshot'
-        #'smplayer'
     ]
     state: present
 
 - name: Package Installation - System Desktop
-  pacman:
+  package:
     name: [
         'rofi',
+        'nitrogen',
         'i3blocks'
     ]
     state: present
-
-- name: Package Installation - Remove Unnecessary Packages
-  pacman:
-    name: [
-        'empathy',
-    ]
-    state: absent

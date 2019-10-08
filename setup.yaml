@@ -9,5 +9,4 @@
 
   - include: tasks/configure-packages.yaml
   - include: tasks/configure-user.yaml
-  - include: tasks/configure-system.yaml
   - include: tasks/configure-i3.yaml

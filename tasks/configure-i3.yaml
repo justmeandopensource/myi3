@@ -1,3 +1,9 @@
+- name: i3 Configuration - Create .i3 directory
+  become_user: "{{ username }}"
+  file:
+    path: "{{ userhome }}/.i3"
+    state: directory
+
 - name: i3 Configuration - Copy "{{ userhome }}/.i3/config"
   become_user: "{{ username }}"
   copy:
@@ -9,6 +15,12 @@
   copy:
     src: "files/configs/i3/config/compton.conf"
     dest: "{{ userhome }}/.config/compton.conf"
+
+- name: i3 Configuration - Create dunst directory
+  become_user: "{{ username }}"
+  file:
+    path: "{{ userhome }}/.config/dunst"
+    state: directory
 
 - name: i3 Configuration - Copy "{{ userhome }}/.config/dunst/dunstrc"
   become_user: "{{ username }}"

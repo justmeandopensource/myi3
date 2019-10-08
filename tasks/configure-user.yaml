@@ -5,12 +5,6 @@
     create: yes
     mode: "0640"
 
-- name: User Configuration - Add "{{ username }}" to docker group
-  user:
-    name: "{{ username }}"
-    groups: docker
-    append: yes
-
 - name: User Configuration - Copy tmux configuration
   copy:
     src: "files/configs/tmux.conf"
