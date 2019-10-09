@@ -13,7 +13,8 @@
 - name: Package Installation - Productivity Tools
   package:
     name: [
-        'gnome-terminal'
+        'gnome-terminal',
+        'ranger'
     ]
     state: present
 
