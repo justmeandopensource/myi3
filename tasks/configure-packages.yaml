@@ -38,6 +38,7 @@
     name: [
         'rofi',
         'nitrogen',
+        'dunst',
         'i3blocks'
     ]
     state: present
