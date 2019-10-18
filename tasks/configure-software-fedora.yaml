@@ -1,14 +1,8 @@
-- name: Package Installation - Update Pacman package cache
-  pacman:
-    update_cache: true
-  changed_when: false
-  when: ansible_facts["os_family"] == "Archlinux"
-
-- name: Package Installation - Update Apt package cache
-  apt:
-    update_cache: true
-  changed_when: false
-  when: ansible_facts["os_family"] == "Debian"
+- name: Package Installation - Enable gregw/i3desktop copr
+  command: dnf copr enable -y gregw/i3desktop
+  args:
+    warn: no
+  register: gregw
 
 - name: Package Installation - Productivity Tools
   package:
@@ -29,7 +23,7 @@
   package:
     name: [
         'flameshot',
-        'imagemagick'
+        'ImageMagick'
     ]
     state: present
 
@@ -38,7 +32,17 @@
     name: [
         'rofi',
         'nitrogen',
-        'dunst',
+	'arandr',
+        'dunst'
+    ]
+    state: present
+
+- name: Package Installation - I3 Desktop
+  package:
+    name: [
+        'i3-gaps',
         'i3blocks'
     ]
     state: present
+  when:
+    gregw.rc == 0

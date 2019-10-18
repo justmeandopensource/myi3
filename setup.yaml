@@ -7,6 +7,11 @@
 
   tasks:
 
-  - include: tasks/configure-packages.yaml
+  - include: tasks/configure-software-manjaro.yaml
+    when: ansible_facts["os_family"] == "Archlinux"
+  - include: tasks/configure-software-ubuntu.yaml
+    when: ansible_facts["os_family"] == "Debian"
+  - include: tasks/configure-software-fedora.yaml
+    when: ansible_facts["os_family"] == "RedHat"
   - include: tasks/configure-user.yaml
   - include: tasks/configure-i3.yaml

@@ -1,0 +1,37 @@
+- name: Package Installation - Update Apt package cache
+  apt:
+    update_cache: true
+  changed_when: false
+
+- name: Package Installation - Productivity Tools
+  package:
+    name: [
+        'gnome-terminal',
+        'ranger'
+    ]
+    state: present
+
+- name: Package Installation - Development Tools
+  package:
+    name: [
+        'binutils',
+    ]
+    state: present
+
+- name: Package Installation - Media
+  package:
+    name: [
+        'flameshot',
+        'imagemagick'
+    ]
+    state: present
+
+- name: Package Installation - System Desktop
+  package:
+    name: [
+        'rofi',
+        'nitrogen',
+        'dunst',
+        'i3blocks'
+    ]
+    state: present
