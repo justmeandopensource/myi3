@@ -42,6 +42,7 @@
   package:
     name: [
         'i3-gaps',
+	'i3lock',
         'i3blocks'
     ]
     state: present
