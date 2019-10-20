@@ -1,0 +1,38 @@
+- name: Package Installation - Update Pacman package cache
+  pacman:
+    update_cache: true
+  changed_when: false
+
+- name: Package Installation - Productivity Tools
+  package:
+    name: [
+        'gnome-terminal',
+        'ranger',
+        'leafpad'
+    ]
+    state: present
+
+- name: Package Installation - Development Tools
+  package:
+    name: [
+        'binutils',
+    ]
+    state: present
+
+- name: Package Installation - Media
+  package:
+    name: [
+        'flameshot',
+        'imagemagick'
+    ]
+    state: present
+
+- name: Package Installation - System Desktop
+  package:
+    name: [
+        'rofi',
+        'nitrogen',
+        'dunst',
+        'i3blocks'
+    ]
+    state: present
