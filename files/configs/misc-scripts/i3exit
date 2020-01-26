@@ -1,9 +1,6 @@
 #!/bin/sh
 # /usr/bin/i3exit
 
-# with openrc use loginctl
-[[ $(cat /proc/1/comm) == "systemd" ]] && logind=systemctl || logind=loginctl
-
 case "$1" in
     lock)
         blurlock
@@ -15,16 +12,16 @@ case "$1" in
         dm-tool switch-to-greeter
         ;;
     suspend)
-        blurlock && $logind suspend
+        blurlock && systemctl suspend
         ;;
     hibernate)
-        blurlock && $logind hibernate
+        blurlock && systemctl hibernate
         ;;
     reboot)
-        $logind reboot
+        systemctl reboot
         ;;
     shutdown)
-        $logind poweroff
+        systemctl poweroff
         ;;
     *)
         echo "== ! i3exit: missing or invalid argument ! =="

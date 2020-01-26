@@ -7,8 +7,7 @@
   package:
     name: [
         'gnome-terminal',
-        'ranger',
-        'leafpad'
+        'ranger'
     ]
     state: present
 
