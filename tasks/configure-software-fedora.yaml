@@ -7,9 +7,9 @@
 - name: Package Installation - Productivity Tools
   package:
     name: [
-        'gnome-terminal',
+        'xfce4-terminal',
         'ranger',
-	'leafpad'
+	'mousepad'
     ]
     state: present
 
@@ -23,8 +23,7 @@
 - name: Package Installation - Media
   package:
     name: [
-        'flameshot',
-        'ImageMagick'
+        'flameshot'
     ]
     state: present
 
