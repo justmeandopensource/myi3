@@ -99,9 +99,6 @@ bindsym $mod+a fullscreen toggle
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
-
 # toggle sticky
 bindsym $mod+Shift+s sticky toggle
 
