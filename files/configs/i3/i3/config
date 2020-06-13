@@ -43,15 +43,25 @@ bindsym $mod+Return exec xfce4-terminal
 # start program launcher
 bindsym $mod+space exec --no-startup-id rofi -show drun 
 
-bindsym $mod+F3 exec firefox
-bindsym $mod+e exec thunar
+bindsym $mod+b exec firefox
+bindsym $mod+e exec pcmanfm
 bindsym $mod+Ctrl+e exec xfce4-terminal -e ranger
 bindsym $mod+Shift+e exec mousepad
 
+#bindsym $mod+e mode "$mode_file"
+set $mode_file (e)thunar, (p)pcmanfm
+mode "$mode_file" {
+    bindsym p exec pcmanfm; mode "default"
+    bindsym e exec thunar; mode "default"
+    
+    # exit system mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
 
 
 # kill focused window
-bindsym $mod+F4 kill
+bindsym $mod+q kill
 
 bindsym $mod+Ctrl+p exec pavucontrol
 bindsym $mod+Ctrl+b exec xfce4-terminal -e 'bmenu'
@@ -60,17 +70,22 @@ bindsym $mod+Print --release exec --no-startup-id flameshot gui
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+exec --no-startup-id nitrogen --restore; sleep 1
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id blueman-applet
 exec --no-startup-id xautolock -time 10 -locker blurlock
 exec --no-startup-id volumeicon
+exec --no-startup-id picom
 #exec --no-startup-id pulseaudio
 #exec --no-startup-id pa-applet
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
+
+# Polybar launch script (located ~/.config/polybar/launch.sh) 
+exec_always --no-startup-id ~/.config/polybar/launch.sh &
+
 
 # change focus
 bindsym $mod+Left focus left
@@ -87,6 +102,7 @@ bindsym $mod+Shift+Right move right
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
 bindsym $mod+h split h;exec notify-send 'tile horizontally'
 bindsym $mod+v split v;exec notify-send 'tile vertically'
 bindsym $mod+d layout toggle split
@@ -97,13 +113,13 @@ bindsym $mod+z split toggle
 bindsym $mod+a fullscreen toggle
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+a floating toggle
 
 # toggle sticky
 bindsym $mod+Shift+s sticky toggle
 
 # focus the parent container
-bindsym $mod+Shift+a focus parent
+bindsym $mod+Shift+space focus parent
 
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -166,40 +182,36 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 # assign [class="Skype"] $ws5
 
 # Open specific applications in floating mode
-for_window [title="alsamixer"] floating enable border pixel 1
+for_window [class="(?i)System-config-printer.py"] floating enable border normal
 for_window [class="calamares"] floating enable border normal
-for_window [title="File Transfer*"] floating enable
+for_window [class="Clipgrab"] floating enable
+for_window [class="fpakman"] floating enable
 for_window [class="Galculator"] floating enable border pixel 1
 for_window [class="GParted"] floating enable border normal
 for_window [class="Lightdm-settings"] floating enable
-for_window [class="Lxappearance"] floating enable sticky enable border normal
-for_window [class="Manjaro-hello"] floating enable
+for_window [class="Lxappearance"] floating enable border normal
 for_window [class="Manjaro Settings Manager"] floating enable border normal
-for_window [title="MuseScore: Play Panel"] floating enable
+for_window [class="Manjaro-hello"] floating enable border normal
+for_window [class="MPlayer"] floating enable
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Oblogout"] fullscreen enable
 for_window [class="octopi"] floating enable
 for_window [class="Pamac-manager"] floating enable
+for_window [class="Pamac-updater"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="qt5ct"] floating enable sticky enable border normal
-for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
-for_window [class="Simple-scan"] floating enable border normal
-for_window [class="(?i)System-config-printer.py"] floating enable border normal
-for_window [class="Skype"] floating enable border normal
-for_window [class="Timeset-gui"] floating enable border normal
-for_window [class="SimpleScreenRecorder"] floating enable border normal
-for_window [class="MPlayer"] floating enable
-for_window [class="Spotify"] floating enable 
-for_window [class="Clipgrab"] floating enable
-for_window [class="fpakman"] floating enable
-for_window [title="i3_help"] floating enable sticky enable border normal
-for_window [class="Lxappearance"] floating enable border normal
-for_window [class="Manjaro-hello"] floating enable border normal
-for_window [class="Pamac-updater"] floating enable
 for_window [class="Qtconfig-qt4"] floating enable border normal
-for_window [title="sudo"] floating enable border normal
+for_window [class="Simple-scan"] floating enable border normal
+for_window [class="SimpleScreenRecorder"] floating enable border normal
+for_window [class="Skype"] floating enable border normal
+for_window [class="Spotify"] floating enable 
+for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="Xfburn"] floating enable
-
+for_window [title="alsamixer"] floating enable border pixel 1
+for_window [title="File Transfer*"] floating enable
+for_window [title="i3_help"] floating enable sticky enable border normal
+for_window [title="MuseScore: Play Panel"] floating enable
+#for_window [title="sudo"] floating enable border normal
 
 
 # switch to workspace with urgent window automatically
@@ -247,6 +259,16 @@ mode "resize" {
 bindsym $mod+l exec --no-startup-id blurlock
 
 
+# Screen brightness controls
+# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
+# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+
+# Pulse Audio Controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% # Increase
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% # Decrease
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # Mute
+
+
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
 # https://i3wm.org/docs/userguide.html#xresources
@@ -279,46 +301,46 @@ set_from_resource $term_color14    color14
 set_from_resource $term_color15    color15
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
-bar {
-	i3bar_command i3bar
-	status_command i3status
-	position top
+#bar {
+	#i3bar_command i3bar
+	#status_command i3status
+	#position top
 
-## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-#	tray_output primary
-#	tray_output eDP1
+### please set your primary output first. Example: 'xrandr --output eDP1 --primary'
+##	tray_output primary
+##	tray_output eDP1
 
-	bindsym button4 nop
-	bindsym button5 nop
-#   font xft:URWGothic-Book 11
-	strip_workspace_numbers yes
+	#bindsym button4 nop
+	#bindsym button5 nop
+##   font xft:URWGothic-Book 11
+	#strip_workspace_numbers yes
 
-    colors {
-        background #222D31
-        statusline #F9FAF9
-        separator  #454947
+    #colors {
+        #background #222D31
+        #statusline #F9FAF9
+        #separator  #454947
 
-#                      border  backgr. text
-        focused_workspace  #F9FAF9 #16a085 #292F34
-        active_workspace   #595B5B #353836 #FDF6E3
-        inactive_workspace #595B5B #222D31 #EEE8D5
-        binding_mode       #16a085 #2C2C2C #F9FAF9
-        urgent_workspace   #16a085 #FDF6E3 #E5201D
-    }
-}
+##                      border  backgr. text
+        #focused_workspace  #F9FAF9 #16a085 #292F34
+        #active_workspace   #595B5B #353836 #FDF6E3
+        #inactive_workspace #595B5B #222D31 #EEE8D5
+        #binding_mode       #16a085 #2C2C2C #F9FAF9
+        #urgent_workspace   #16a085 #FDF6E3 #E5201D
+    #}
+#}
 
 # hide/unhide i3status bar
-bindsym $mod+m bar mode toggle
+# bindsym $mod+m bar mode toggle
 
 # Theme colors
-# class                   border  backgr. text    indic.   child_border
-  client.focused          #FFFFFF #556064 #80FFF9 #FDF6E3
-  client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
-  client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
-  client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
-  client.placeholder      #000000 #0c0c0c #ffffff #000000 
+# class                 border  backgr. text    indicator child_border
+client.focused          #4c7899 #285577 #ffffff #2e9ef4   #FFFF00
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
-  client.background       #2B2C2B
+client.background       #ffffff
 
 #############################
 ### settings for i3-gaps: ###
