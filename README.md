@@ -3,6 +3,9 @@ Configure my Laptop
 
 ## How to run it
 #### Install Pre-reqs
+
+- enable rpm fusion libraries for fedora
+- enabne AUR libraries for Manjaro
 ```
 $ sudo pacman -S ansible i3        (for Arch Linux)
 $ sudo dnf install ansible         (for Fedora, i3 will be installed during ansible run)
