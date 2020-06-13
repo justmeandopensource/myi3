@@ -6,9 +6,13 @@
 - name: Package Installation - Productivity Tools
   package:
     name: [
-        'gnome-terminal',
+        'xfce4-terminal',
         'ranger',
-        'leafpad'
+        'mousepad'
+	      'pcmanfm'
+	      'mpv'
+	      'smplayer'
+	      'polybar'
     ]
     state: present
 
@@ -22,8 +26,7 @@
 - name: Package Installation - Media
   package:
     name: [
-        'flameshot',
-        'imagemagick'
+        'flameshot'
     ]
     state: present
 
@@ -32,7 +35,17 @@
     name: [
         'rofi',
         'nitrogen',
-        'dunst',
+	      'arandr',
+        'dunst'
+	      'lxappearance'
+    ]
+    state: present
+
+- name: Package Installation - I3 Desktop
+  package:
+    name: [
+        'i3-gaps',
+	      'i3lock',
         'i3blocks'
     ]
     state: present
