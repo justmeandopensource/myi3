@@ -10,6 +10,10 @@
         'xfce4-terminal',
         'ranger',
 	'mousepad'
+	'pcmanfm'
+	'mpv'
+	'smplayer'
+	'polybar'
     ]
     state: present
 
@@ -34,6 +38,7 @@
         'nitrogen',
 	'arandr',
         'dunst'
+	'lxappearance'
     ]
     state: present
 
