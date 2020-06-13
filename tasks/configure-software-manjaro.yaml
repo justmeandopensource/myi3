@@ -9,10 +9,10 @@
         'xfce4-terminal',
         'ranger',
         'mousepad'
-	      'pcmanfm'
-	      'mpv'
-	      'smplayer'
-	      'polybar'
+	'pcmanfm'
+	'mpv'
+	'smplayer'
+	'polybar'
     ]
     state: present
 
@@ -35,9 +35,9 @@
     name: [
         'rofi',
         'nitrogen',
-	      'arandr',
+	'arandr',
         'dunst'
-	      'lxappearance'
+	'lxappearance'
     ]
     state: present
 
@@ -45,7 +45,7 @@
   package:
     name: [
         'i3-gaps',
-	      'i3lock',
+	'i3lock',
         'i3blocks'
     ]
     state: present
