@@ -254,7 +254,7 @@ format-prefix =
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #0a6cf5
 
-label = %date% %time%s
+label = %date% %time%
 
 
 
