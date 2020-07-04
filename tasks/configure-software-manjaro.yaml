@@ -5,47 +5,25 @@
 
 - name: Package Installation - Productivity Tools
   package:
-    name: [
-        'xfce4-terminal',
-        'ranger',
-        'mousepad'
-	'pcmanfm'
-	'mpv'
-	'smplayer'
-	'polybar'
-    ]
+    name: ["xfce4-terminal", "ranger", "mousepad", "pcmanfm", "mpv", "polybar,"]
     state: present
 
 - name: Package Installation - Development Tools
   package:
-    name: [
-        'binutils',
-    ]
+    name: ["binutils,"]
     state: present
 
 - name: Package Installation - Media
   package:
-    name: [
-        'flameshot'
-    ]
+    name: ["flameshot,"]
     state: present
 
 - name: Package Installation - System Desktop
   package:
-    name: [
-        'rofi',
-        'nitrogen',
-	'arandr',
-        'dunst'
-	'lxappearance'
-    ]
+    name: ["rofi", "nitrogen", "arandr", "dunst", "lxappearance,"]
     state: present
 
 - name: Package Installation - I3 Desktop
   package:
-    name: [
-        'i3-gaps',
-	'i3lock',
-        'i3blocks'
-    ]
+    name: ["i3-gaps", "i3lock", "i3blocks,"]
     state: present
