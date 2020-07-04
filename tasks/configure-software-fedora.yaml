@@ -2,7 +2,7 @@
 - name: Package Installation - Enable gregw/i3desktop copr
   command: dnf copr enable -y gregw/i3desktop
   args:
-    warn: no
+    warn: false
   register: gregw
 
 - name: Package Installation - Productivity Tools
