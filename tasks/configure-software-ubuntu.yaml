@@ -1,3 +1,4 @@
+---
 - name: Package Installation - Update Apt package cache
   apt:
     update_cache: true

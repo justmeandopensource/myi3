@@ -1,3 +1,4 @@
+---
 - name: Package Installation - Enable gregw/i3desktop copr
   command: dnf copr enable -y gregw/i3desktop
   args:
