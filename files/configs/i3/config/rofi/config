@@ -1,4 +1,4 @@
-rofi.theme: android_notification
-rofi.terminal: gnome-terminal
+rofi.theme: DarkBlue by Qball
+rofi.terminal: xfce4-terminal
 rofi.ssh-client: ssh
 rofi.ssh-command: {terminal} -- {ssh-client} {host}

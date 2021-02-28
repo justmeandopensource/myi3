@@ -1,0 +1,41 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        colors = true
+        interval = 5
+}
+
+
+order += "tztime local"
+order += "volume master"
+order += "wireless _first_"
+
+volume master {
+        format = "VOL %volume"
+        format_muted = "VOL muted"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
+
+
+
+wireless _first_ {
+        format_up = "(%essid, %bitrate)"
+        format_down = "W: down"
+}
+
+
+tztime local {
+        format = "%d-%m-%Y %H:%M:%S"
+}
+
+
+
+
